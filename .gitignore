@@ -4,3 +4,4 @@ Untitled Folder/
 .ipynb_checkpoints/
 __pycache__
 processed_data/
+credentials.py
