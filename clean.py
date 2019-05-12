@@ -25,7 +25,7 @@ def no_original_msg(df):
     ]
     # Find emails to drop
     drop_emails = (
-        df.body.str.extract('("[A-z \.,]+" <[a-zA-Z0-9_.]+@[A-z ]+\..{2,3}>)')[0]
+        df.body.str.extract('("?[A-z \.,]+"? <[a-zA-Z0-9_.]+@[A-z ]+\..{2,3}>)')[0]
         .dropna()
         .unique()
         .tolist()
@@ -36,7 +36,7 @@ def no_original_msg(df):
     )
     exprs += drop_emails2
     drop_emails3 = (
-        df.body.str.extract("([0-9]{2}/[0-9]{2}/[0-9]{4} [0-9]{2}:[0-9]{2} PMTo:)")
+        df.body.str.extract("([0-9]{2}/[0-9]{2}/[0-9]{4} [0-9]{2}:[0-9]{2} PM(?: )?To:)")
         .dropna()[0]
         .unique()
         .tolist()
